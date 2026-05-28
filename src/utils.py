@@ -107,8 +107,8 @@ def save_conversation_log(log_entries, output_path):
 
     current_iteration = 0
     for entry in log_entries:
-        # Detect iteration boundaries
-        if entry["role"] == "user" and "Iteration" in entry["content"]:
+        # Detect iteration boundaries (support both English and Chinese prompts)
+        if entry["role"] == "user" and ("Iteration" in entry["content"] or "迭代" in entry["content"]):
             current_iteration += 1
             lines.append(f"\n## Iteration {current_iteration}\n")
 
@@ -187,7 +187,7 @@ def generate_report(log_entries, stats, output_path):
     iteration_responses = []
     current_response = None
     for entry in log_entries:
-        if entry["role"] == "user" and "Iteration" in entry["content"]:
+        if entry["role"] == "user" and ("Iteration" in entry["content"] or "迭代" in entry["content"]):
             if current_response is not None:
                 iteration_responses.append(current_response)
             current_response = None

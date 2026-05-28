@@ -69,7 +69,7 @@ python src/main.py
 
 ### 步骤 7：清理临时文件
 ```bash
-rm TODO.md
+rm TODO.md README.md
 ```
 
 ### 步骤 8：最终提交到 Moodle
