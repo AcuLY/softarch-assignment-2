@@ -1,39 +1,39 @@
-Perform ADD 3.0 Iteration 2: Identifying Structures to Support Primary Functionality.
+执行 ADD 3.0 迭代 2：识别支撑主要功能的结构。
 
-Building on the overall system structure established in Iteration 1, now refine the architecture to support all primary use cases.
+基于迭代 1 建立的整体系统结构，现在精化架构以支持所有主要用例。
 
-**Focus drivers for this iteration:**
-- HPS-1: Log In (authentication and authorization)
-- HPS-2: Change Prices (price calculation, simulation, publishing)
-- HPS-3: Query Prices (API and UI queries)
-- HPS-4: Manage Hotels (hotel configuration)
-- HPS-5: Manage Rates (rate business rules)
-- HPS-6: Manage Users (permission management)
-- QA-5: Security (credential validation, function-level authorization)
-- QA-6: Modifiability (protocol-independent query endpoints)
+**本轮迭代的重点驱动因素：**
+- HPS-1：登录（认证和授权）
+- HPS-2：更改价格（价格计算、模拟、发布）
+- HPS-3：查询价格（API 和 UI 查询）
+- HPS-4：管理酒店（酒店配置）
+- HPS-5：管理费率（费率业务规则）
+- HPS-6：管理用户（权限管理）
+- QA-5：安全性（凭据验证、功能级授权）
+- QA-6：可修改性（协议无关的查询端点）
 
-**Your tasks for each step:**
+**每个步骤的具体任务：**
 
-**Step 2 - Establish Iteration Goal:** The goal is to decompose the system into modules/components that directly support each use case, ensuring security and modifiability.
+**Step 2 - 建立迭代目标：** 目标是将系统分解为直接支持每个用例的模块/组件，确保安全性和可修改性。
 
-**Step 3 - Choose Elements to Refine:** Select the internal layers/modules identified in Iteration 1 for further decomposition.
+**Step 3 - 选择要精化的元素：** 选择迭代 1 中确定的内部层/模块进行进一步分解。
 
-**Step 4 - Choose Design Concepts:** Select patterns for:
-- Authentication/authorization (e.g., token-based auth, RBAC)
-- Domain module decomposition strategy
-- API design patterns (e.g., API Gateway, protocol adapters for QA-6)
-- Event-driven price publishing (leveraging Kafka per CON-3)
+**Step 4 - 选择设计概念：** 为以下方面选择模式：
+- 认证/授权（例如基于 token 的认证、RBAC）
+- 领域模块分解策略
+- API 设计模式（例如 API 网关、QA-6 的协议适配器）
+- 事件驱动的价格发布（利用 Kafka，符合 CON-3）
 
-**Step 5 - Instantiate Elements:** Define concrete modules/services for each use case. Specify:
-- Component responsibilities
-- Interfaces between components (API contracts)
-- Data flow for key scenarios (especially HPS-2: Change Prices workflow)
+**Step 5 - 实例化元素：** 为每个用例定义具体的模块/服务。指明：
+- 组件职责
+- 组件间接口（API 契约）
+- 关键场景的数据流（特别是 HPS-2：更改价格的工作流程）
 
-**Step 6 - Sketch Views:** Produce views using Mermaid diagrams:
-- A detailed component diagram showing all modules and their relationships
-- A sequence diagram for the HPS-2 (Change Prices) workflow
-- A sequence diagram for HPS-3 (Query Prices) workflow
-- A component diagram showing the security/auth flow
-Record design decisions with rationale.
+**Step 6 - 绘制视图：** 使用 Mermaid 图产出视图：
+- 详细组件图，展示所有模块及其关系
+- HPS-2（更改价格）工作流程的序列图
+- HPS-3（查询价格）工作流程的序列图
+- 展示安全/认证流程的组件图
+记录设计决策及其理由。
 
-**Step 7 - Analysis:** Verify all six use cases are supported. Map each use case to the responsible component(s). Identify quality attributes not yet fully addressed.
+**Step 7 - 分析：** 验证六个用例是否全部得到支持。将每个用例映射到负责的组件。识别尚未完全处理的质量属性。

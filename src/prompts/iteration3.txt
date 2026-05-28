@@ -1,42 +1,42 @@
-Perform ADD 3.0 Iteration 3: Addressing Reliability and Availability Quality Attributes.
+执行 ADD 3.0 迭代 3：处理可靠性和可用性质量属性。
 
-Building on Iterations 1 and 2, now refine the architecture to ensure reliability, availability, performance, and monitorability.
+基于迭代 1 和 2 的成果，现在精化架构以确保可靠性、可用性、性能和可监控性。
 
-**Focus drivers for this iteration:**
-- QA-1: Performance (price publication < 100ms)
-- QA-2: Reliability (100% price changes published successfully)
-- QA-3: Availability (99.9% uptime SLA for queries)
-- QA-8: Monitorability (100% measurement collection for price publication)
+**本轮迭代的重点驱动因素：**
+- QA-1：性能（价格发布 < 100ms）
+- QA-2：可靠性（100% 的价格更改成功发布）
+- QA-3：可用性（查询服务 99.9% 正常运行时间 SLA）
+- QA-8：可监控性（价格发布的 100% 指标采集）
 
-**Your tasks for each step:**
+**每个步骤的具体任务：**
 
-**Step 2 - Establish Iteration Goal:** The goal is to introduce architectural tactics and mechanisms that guarantee reliability (no lost price changes), high availability (99.9%), fast performance (sub-100ms publication), and comprehensive monitoring.
+**Step 2 - 建立迭代目标：** 目标是引入架构战术和机制，保证可靠性（不丢失价格更改）、高可用性（99.9%）、高性能（亚 100ms 发布）和全面监控。
 
-**Step 3 - Choose Elements to Refine:** Select the price publication pipeline, the query service, and the messaging infrastructure for refinement.
+**Step 3 - 选择要精化的元素：** 选择价格发布管道、查询服务和消息基础设施进行精化。
 
-**Step 4 - Choose Design Concepts:** Select and justify tactics for:
-- **Performance (QA-1):** Caching strategies, async processing, efficient calculation pipelines
-- **Reliability (QA-2):** Message persistence, acknowledgment, retry/dead-letter queues, transactional outbox pattern
-- **Availability (QA-3):** Redundancy, load balancing, health checks, failover strategies, circuit breakers
-- **Monitorability (QA-8):** Distributed tracing, metrics collection, structured logging, alerting
+**Step 4 - 选择设计概念：** 为以下方面选择并论证战术：
+- **性能（QA-1）：** 缓存策略、异步处理、高效计算管道
+- **可靠性（QA-2）：** 消息持久化、确认机制、重试/死信队列、事务发件箱模式（Transactional Outbox）
+- **可用性（QA-3）：** 冗余、负载均衡、健康检查、故障转移策略、断路器
+- **可监控性（QA-8）：** 分布式追踪、指标收集、结构化日志、告警
 
-**Step 5 - Instantiate Elements:** Refine the existing components with:
-- Specific caching layers and strategies
-- Kafka consumer group configurations for reliability
-- Load balancer and replica configurations
-- Monitoring/observability stack components
-Define interfaces for health checks, metrics endpoints, etc.
+**Step 5 - 实例化元素：** 用以下内容精化现有组件：
+- 具体的缓存层和缓存策略
+- Kafka 消费者组配置以确保可靠性
+- 负载均衡器和副本配置
+- 监控/可观测性技术栈组件
+定义健康检查、指标端点等接口。
 
-**Step 6 - Sketch Views:** Produce views using Mermaid diagrams:
-- A refined deployment diagram showing redundancy and load balancing
-- A sequence diagram for reliable price publication (showing retry/acknowledgment)
-- A component diagram of the monitoring/observability infrastructure
-- A data flow diagram showing the caching strategy for price queries
-Record design decisions with rationale.
+**Step 6 - 绘制视图：** 使用 Mermaid 图产出视图：
+- 精化后的部署图，展示冗余和负载均衡
+- 可靠价格发布的序列图（展示重试/确认机制）
+- 监控/可观测性基础设施的组件图
+- 展示价格查询缓存策略的数据流图
+记录设计决策及其理由。
 
-**Step 7 - Analysis:** Verify each quality attribute scenario is satisfied:
-- QA-1: Demonstrate how < 100ms is achieved
-- QA-2: Demonstrate how 100% reliability is guaranteed
-- QA-3: Demonstrate how 99.9% availability is maintained
-- QA-8: Demonstrate how 100% monitoring coverage is achieved
-Identify remaining concerns for Iteration 4.
+**Step 7 - 分析：** 验证每个质量属性场景是否满足：
+- QA-1：论证如何实现 < 100ms
+- QA-2：论证如何保证 100% 可靠性
+- QA-3：论证如何维持 99.9% 可用性
+- QA-8：论证如何实现 100% 监控覆盖
+确定迭代 4 需要处理的剩余关注点。
