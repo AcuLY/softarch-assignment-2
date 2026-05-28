@@ -1,0 +1,39 @@
+Perform ADD 3.0 Iteration 2: Identifying Structures to Support Primary Functionality.
+
+Building on the overall system structure established in Iteration 1, now refine the architecture to support all primary use cases.
+
+**Focus drivers for this iteration:**
+- HPS-1: Log In (authentication and authorization)
+- HPS-2: Change Prices (price calculation, simulation, publishing)
+- HPS-3: Query Prices (API and UI queries)
+- HPS-4: Manage Hotels (hotel configuration)
+- HPS-5: Manage Rates (rate business rules)
+- HPS-6: Manage Users (permission management)
+- QA-5: Security (credential validation, function-level authorization)
+- QA-6: Modifiability (protocol-independent query endpoints)
+
+**Your tasks for each step:**
+
+**Step 2 - Establish Iteration Goal:** The goal is to decompose the system into modules/components that directly support each use case, ensuring security and modifiability.
+
+**Step 3 - Choose Elements to Refine:** Select the internal layers/modules identified in Iteration 1 for further decomposition.
+
+**Step 4 - Choose Design Concepts:** Select patterns for:
+- Authentication/authorization (e.g., token-based auth, RBAC)
+- Domain module decomposition strategy
+- API design patterns (e.g., API Gateway, protocol adapters for QA-6)
+- Event-driven price publishing (leveraging Kafka per CON-3)
+
+**Step 5 - Instantiate Elements:** Define concrete modules/services for each use case. Specify:
+- Component responsibilities
+- Interfaces between components (API contracts)
+- Data flow for key scenarios (especially HPS-2: Change Prices workflow)
+
+**Step 6 - Sketch Views:** Produce views using Mermaid diagrams:
+- A detailed component diagram showing all modules and their relationships
+- A sequence diagram for the HPS-2 (Change Prices) workflow
+- A sequence diagram for HPS-3 (Query Prices) workflow
+- A component diagram showing the security/auth flow
+Record design decisions with rationale.
+
+**Step 7 - Analysis:** Verify all six use cases are supported. Map each use case to the responsible component(s). Identify quality attributes not yet fully addressed.

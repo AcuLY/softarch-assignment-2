@@ -1,0 +1,42 @@
+Perform ADD 3.0 Iteration 3: Addressing Reliability and Availability Quality Attributes.
+
+Building on Iterations 1 and 2, now refine the architecture to ensure reliability, availability, performance, and monitorability.
+
+**Focus drivers for this iteration:**
+- QA-1: Performance (price publication < 100ms)
+- QA-2: Reliability (100% price changes published successfully)
+- QA-3: Availability (99.9% uptime SLA for queries)
+- QA-8: Monitorability (100% measurement collection for price publication)
+
+**Your tasks for each step:**
+
+**Step 2 - Establish Iteration Goal:** The goal is to introduce architectural tactics and mechanisms that guarantee reliability (no lost price changes), high availability (99.9%), fast performance (sub-100ms publication), and comprehensive monitoring.
+
+**Step 3 - Choose Elements to Refine:** Select the price publication pipeline, the query service, and the messaging infrastructure for refinement.
+
+**Step 4 - Choose Design Concepts:** Select and justify tactics for:
+- **Performance (QA-1):** Caching strategies, async processing, efficient calculation pipelines
+- **Reliability (QA-2):** Message persistence, acknowledgment, retry/dead-letter queues, transactional outbox pattern
+- **Availability (QA-3):** Redundancy, load balancing, health checks, failover strategies, circuit breakers
+- **Monitorability (QA-8):** Distributed tracing, metrics collection, structured logging, alerting
+
+**Step 5 - Instantiate Elements:** Refine the existing components with:
+- Specific caching layers and strategies
+- Kafka consumer group configurations for reliability
+- Load balancer and replica configurations
+- Monitoring/observability stack components
+Define interfaces for health checks, metrics endpoints, etc.
+
+**Step 6 - Sketch Views:** Produce views using Mermaid diagrams:
+- A refined deployment diagram showing redundancy and load balancing
+- A sequence diagram for reliable price publication (showing retry/acknowledgment)
+- A component diagram of the monitoring/observability infrastructure
+- A data flow diagram showing the caching strategy for price queries
+Record design decisions with rationale.
+
+**Step 7 - Analysis:** Verify each quality attribute scenario is satisfied:
+- QA-1: Demonstrate how < 100ms is achieved
+- QA-2: Demonstrate how 100% reliability is guaranteed
+- QA-3: Demonstrate how 99.9% availability is maintained
+- QA-8: Demonstrate how 100% monitoring coverage is achieved
+Identify remaining concerns for Iteration 4.

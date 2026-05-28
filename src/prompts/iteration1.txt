@@ -1,0 +1,30 @@
+Perform ADD 3.0 Iteration 1: Establishing an Overall System Structure.
+
+This is the first iteration. Begin with Step 1 (Review Inputs) to identify architectural drivers, then proceed through Steps 2-7.
+
+**Focus drivers for this iteration:**
+- CRN-1: Establish an overall initial system structure
+- CRN-2: Leverage Java, Angular, and Kafka expertise
+- QA-4: Scalability (100K to 1M queries/day)
+- QA-7: Deployability (move between environments without code changes)
+- CON-1 through CON-6: All constraints
+
+**Your tasks for each step:**
+
+**Step 1 - Review Inputs:** Summarize the key architectural drivers from the provided case study (design purpose, primary functionality, quality attributes, concerns, constraints).
+
+**Step 2 - Establish Iteration Goal:** State the goal for this iteration and identify which drivers are being addressed.
+
+**Step 3 - Choose Elements to Refine:** Since this is greenfield development, select the entire system as the element to refine through decomposition.
+
+**Step 4 - Choose Design Concepts:** Select and justify the reference architecture pattern (e.g., layered, microservices, event-driven) and key technology decisions that satisfy the selected drivers.
+
+**Step 5 - Instantiate Elements:** Define the major architectural elements (layers/modules/services), assign responsibilities, and define their interfaces and relationships.
+
+**Step 6 - Sketch Views:** Produce architectural views using Mermaid diagrams:
+- A system context diagram
+- A high-level component/module decomposition diagram
+- A deployment diagram showing the runtime infrastructure
+Record key design decisions with rationale.
+
+**Step 7 - Analysis:** Analyze whether the iteration goal has been achieved. Create a table mapping drivers to design decisions. Identify what remains to be addressed in subsequent iterations.

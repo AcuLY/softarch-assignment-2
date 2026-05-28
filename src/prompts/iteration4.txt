@@ -1,0 +1,43 @@
+Perform ADD 3.0 Iteration 4: Addressing Development and Operations.
+
+Building on Iterations 1-3, now address deployment, testability, team allocation, and operational concerns.
+
+**Focus drivers for this iteration:**
+- QA-7: Deployability (move between environments without code changes)
+- QA-9: Testability (100% integration testing independently of external systems)
+- CRN-3: Allocate work to members of the development team
+- CRN-4: Avoid introducing technical debt
+- CRN-5: Set up a continuous deployment infrastructure
+
+**Your tasks for each step:**
+
+**Step 2 - Establish Iteration Goal:** The goal is to define the development and operations infrastructure that enables zero-code-change deployments, independent testing of all components, clear team responsibilities, and automated CI/CD pipelines.
+
+**Step 3 - Choose Elements to Refine:** Select the deployment infrastructure, testing framework, and development workflow elements.
+
+**Step 4 - Choose Design Concepts:** Select and justify:
+- **Deployability (QA-7):** Environment-specific configuration (externalized config, config maps/secrets), containerization (Docker), orchestration (Kubernetes)
+- **Testability (QA-9):** Test doubles/mocks for external systems, contract testing, test containers, integration test environments
+- **Team allocation (CRN-3):** Module ownership mapping based on the component decomposition
+- **Technical debt avoidance (CRN-4):** Code quality gates, architectural fitness functions, dependency management
+- **CI/CD (CRN-5):** Pipeline stages, automated quality gates, deployment strategies (blue-green/canary)
+
+**Step 5 - Instantiate Elements:** Define:
+- CI/CD pipeline stages and tools
+- Container/orchestration configuration approach
+- Testing strategy for each component (unit, integration, contract, E2E)
+- Team-to-module assignment matrix
+- Configuration management approach (per-environment configs)
+
+**Step 6 - Sketch Views:** Produce views using Mermaid diagrams:
+- A CI/CD pipeline diagram showing all stages
+- A deployment diagram with containerization and environment promotion
+- A team allocation diagram mapping teams to components
+- A testing architecture diagram showing test types and mock boundaries
+Record design decisions with rationale.
+
+**Step 7 - Analysis:** Final review:
+- Verify all drivers from all iterations are addressed
+- Create a comprehensive traceability matrix (all QAs, CRNs, CONs → design decisions)
+- Summarize the complete architecture and confirm the design purpose is achieved
+- Note any remaining risks or future considerations
