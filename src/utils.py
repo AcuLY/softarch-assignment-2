@@ -179,8 +179,18 @@ def generate_report(log_entries, stats, output_path):
     """
     lines = []
 
-    # ===== SECTION 1: ADD Output Results =====
+    # ===== HEADER + Group Members =====
     lines.append("# Software Architecture Assignment 2 - Report\n")
+    lines.append("## Group Members and Contributions\n")
+    lines.append("| Name (Chinese) | Student ID | Contributions |")
+    lines.append("|----------------|------------|---------------|")
+    lines.append("| [YOUR_NAME_1] | [STUDENT_ID_1] | Designed the System Prompt: structured the ADD 3.0 prior knowledge, encoded the Hotel Pricing System case study (use cases, quality attribute scenarios, concerns, constraints), defined the role prompt and the Mermaid output-format requirements. Wrote and tested the prompts for Iterations 1 and 2 (overall structure and primary functionality), and validated that all six use cases and the structural decisions were correctly addressed. |")
+    lines.append("| [YOUR_NAME_2] | [STUDENT_ID_2] | Implemented the Python automation tool: integrated the OpenAI-compatible PPIO API, maintained multi-turn conversation context, recorded every turn with timestamps and token usage, extracted Mermaid code blocks into per-iteration `.mmd` files, and generated the final report and conversation log automatically. Handled API debugging and verified end-to-end runs. |")
+    lines.append("| [YOUR_NAME_3] | [STUDENT_ID_3] | Designed the prompts for Iterations 3 and 4 (reliability/availability tactics and DevOps/testability), focusing on which quality attributes and architectural concerns each iteration must address. Reviewed all model outputs for ADD-method conformance, validated the cross-iteration traceability matrix in the final analysis, and assembled the report for submission. |")
+    lines.append("")
+    lines.append("---\n")
+
+    # ===== SECTION 1: ADD Output Results =====
     lines.append("## I. Output Results of ADD\n")
 
     # Extract model responses for each iteration
@@ -238,11 +248,7 @@ def generate_report(log_entries, stats, output_path):
 5. **Keeping the Number of Human Interactions Minimal**: One of the assignment's evaluation metrics is the number of human interactions (turns). Achieving complete Step 2-7 outputs from a single user prompt per iteration required heavy investment in prompt design: every prompt explicitly lists what each step must produce. The result was exactly 4 turns total — one per iteration — with no follow-up clarifications required.""")
 
     lines.append("### 2) A detailed account of personal contributions to the group work\n")
-    lines.append("| Name (Chinese) | Contributions |")
-    lines.append("|----------------|---------------|")
-    lines.append("| [YOUR_NAME_1] | Designed the System Prompt: structured the ADD 3.0 prior knowledge, encoded the Hotel Pricing System case study (use cases, quality attribute scenarios, concerns, constraints), defined the role prompt and the Mermaid output-format requirements. Wrote and tested the prompts for Iterations 1 and 2 (overall structure and primary functionality), and validated that all six use cases and the structural decisions were correctly addressed. |")
-    lines.append("| [YOUR_NAME_2] | Implemented the Python automation tool: integrated the OpenAI-compatible PPIO API, maintained multi-turn conversation context, recorded every turn with timestamps and token usage, extracted Mermaid code blocks into per-iteration `.mmd` files, and generated the final report and conversation log automatically. Handled API debugging and verified end-to-end runs. |")
-    lines.append("| [YOUR_NAME_3] | Designed the prompts for Iterations 3 and 4 (reliability/availability tactics and DevOps/testability), focusing on which quality attributes and architectural concerns each iteration must address. Reviewed all model outputs for ADD-method conformance, validated the cross-iteration traceability matrix in the final analysis, and assembled the report for submission. |")
+    lines.append("See the **Group Members and Contributions** table at the beginning of this report for a detailed account of each member's contributions to the group work.")
     lines.append("")
 
     with open(output_path, 'w', encoding='utf-8') as f:
