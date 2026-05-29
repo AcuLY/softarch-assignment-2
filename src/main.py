@@ -1,21 +1,24 @@
 """
 ADD 3.0 Architecture Design Tool - Hotel Pricing System
 ========================================================
-Automated interaction with Gemini to perform 4 iterations of ADD 3.0.
+Automated interaction with Gemini (via PPIO OpenAI-compatible endpoint)
+to perform 4 iterations of ADD 3.0.
 
 Usage:
-    export GEMINI_API_KEY="your-api-key-here"
+    export PPIO_API_KEY="your-api-key-here"
     python src/main.py
 """
 import os
 import sys
 import datetime
 
-import google.generativeai as genai
+from openai import OpenAI
 
 from config import (
-    GEMINI_API_KEY,
+    API_KEY,
+    API_BASE_URL,
     MODEL_NAME,
+    DISPLAY_MODEL_NAME,
     GENERATION_CONFIG,
     PROMPTS_DIR,
     OUTPUT_DIR,
@@ -41,9 +44,9 @@ def load_prompt(filename):
 
 def main():
     # --- Validate API Key ---
-    if not GEMINI_API_KEY:
-        print("ERROR: GEMINI_API_KEY environment variable is not set.")
-        print("Please set it: export GEMINI_API_KEY='your-key-here'")
+    if not API_KEY:
+        print("ERROR: PPIO_API_KEY environment variable is not set.")
+        print("Please set it: export PPIO_API_KEY='your-key-here'")
         sys.exit(1)
 
     # --- Setup ---
@@ -52,22 +55,20 @@ def main():
 
     print("=" * 60)
     print("ADD 3.0 Architecture Design - Hotel Pricing System")
-    print(f"Model: {MODEL_NAME}")
+    print(f"Model: {DISPLAY_MODEL_NAME} (via PPIO: {MODEL_NAME})")
     print(f"Method: Direct LLM Interaction (Option 1)")
     print("=" * 60)
 
-    # --- Initialize Gemini ---
-    genai.configure(api_key=GEMINI_API_KEY)
+    # --- Initialize OpenAI-compatible client ---
+    client = OpenAI(
+        api_key=API_KEY,
+        base_url=API_BASE_URL,
+    )
 
     system_prompt = load_prompt("system_prompt.txt")
 
-    model = genai.GenerativeModel(
-        model_name=MODEL_NAME,
-        generation_config=GENERATION_CONFIG,
-        system_instruction=system_prompt,
-    )
-
-    chat = model.start_chat()
+    # Maintain full conversation history for multi-turn context
+    messages = [{"role": "system", "content": system_prompt}]
 
     # --- Run Iterations ---
     log_entries = []
@@ -82,13 +83,18 @@ def main():
 
         print(f"\n[{get_timestamp()}] Sending {iter_name}...")
 
-        # Record user message
+        # Append user message
         user_timestamp = get_timestamp()
+        messages.append({"role": "user", "content": prompt_text})
         log_interaction(log_entries, "user", prompt_text, timestamp=user_timestamp)
 
-        # Send to Gemini
+        # Send to API
         try:
-            response = chat.send_message(prompt_text)
+            response = client.chat.completions.create(
+                model=MODEL_NAME,
+                messages=messages,
+                **GENERATION_CONFIG,
+            )
         except Exception as e:
             print(f"  ERROR: {e}")
             log_interaction(
@@ -99,15 +105,17 @@ def main():
             continue
 
         # Extract response text and token info
-        response_text = response.text
+        response_text = response.choices[0].message.content
         token_info = None
-        if hasattr(response, 'usage_metadata') and response.usage_metadata:
-            metadata = response.usage_metadata
+        if response.usage:
             token_info = {
-                "prompt_tokens": getattr(metadata, 'prompt_token_count', 0),
-                "candidates_tokens": getattr(metadata, 'candidates_token_count', 0),
-                "total_tokens": getattr(metadata, 'total_token_count', 0),
+                "prompt_tokens": response.usage.prompt_tokens,
+                "candidates_tokens": response.usage.completion_tokens,
+                "total_tokens": response.usage.total_tokens,
             }
+
+        # Append assistant message to maintain context
+        messages.append({"role": "assistant", "content": response_text})
 
         # Record model response
         model_timestamp = get_timestamp()

@@ -3,16 +3,17 @@ Configuration for the ADD 3.0 Architecture Design Tool.
 """
 import os
 
-# Gemini API Configuration
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
-MODEL_NAME = "gemini-3.1-pro-preview"
+# PPIO API Configuration (OpenAI-compatible endpoint)
+API_KEY = os.environ.get("PPIO_API_KEY", "")
+API_BASE_URL = "https://api.ppio.com/openai/v1"
+MODEL_NAME = "pa/gemini-3.1-pro-preview"
+DISPLAY_MODEL_NAME = "gemini-3.1-pro-preview"
 
 # Generation parameters
 GENERATION_CONFIG = {
     "temperature": 0.7,
     "top_p": 0.95,
-    "top_k": 40,
-    "max_output_tokens": 16384,
+    "max_tokens": 16384,
 }
 
 # File paths

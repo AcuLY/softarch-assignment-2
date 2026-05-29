@@ -101,7 +101,7 @@ def save_conversation_log(log_entries, output_path):
     lines = []
     lines.append("# Complete Conversation Log - ADD 3.0 Hotel Pricing System Design\n")
     lines.append(f"**Generated:** {get_timestamp()}\n")
-    lines.append(f"**Model:** gemini-3.1-pro-preview\n")
+    lines.append(f"**Model:** gemini-3.1-pro-preview (via PPIO)\n")
     lines.append(f"**Method:** Direct LLM Interaction (Option 1)\n")
     lines.append("---\n")
 
@@ -112,7 +112,7 @@ def save_conversation_log(log_entries, output_path):
             current_iteration += 1
             lines.append(f"\n## Iteration {current_iteration}\n")
 
-        role_label = "**Human**" if entry["role"] == "user" else "**Model (gemini-3.1-pro-preview)**"
+        role_label = "**Human**" if entry["role"] == "user" else "**Model (gemini-3.1-pro-preview via PPIO)**"
         lines.append(f"### {role_label}")
         lines.append(f"*Timestamp: {entry['timestamp']}*\n")
         lines.append(entry["content"])
